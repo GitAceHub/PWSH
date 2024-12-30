@@ -1,7 +1,7 @@
 # Variables
 $sourcePath = "<Path to cursor files>"
-$cursorDir = Join-Path -Path $env:windir -ChildPath "Cursors\W11_light_v2.2_small_amber"
-$schemeName = "Cursor Scheme Name"
+$cursorDir = Join-Path -Path $env:windir -ChildPath "<Child Path>"
+$schemeName = "Custom Cursor Scheme"
 
 # List of cursor files
 $cursorFiles = @(
@@ -77,7 +77,7 @@ foreach ($role in @(
     "Pin"
 )) {
     $cursorFile = $cursorMappings[$role]
-    $cursorPath = "%SystemRoot%\\Cursors\\W11_light_v2.2_small_amber\\$cursorFile"
+    $cursorPath = "%SystemRoot%\\Cursors\\<Child Path>\\$cursorFile"
     $schemeCursors += $cursorPath
 }
 
@@ -96,7 +96,7 @@ Set-ItemProperty -Path $cursorRegistryKey -Name "(Default)" -Value $schemeName
 
 foreach ($role in $cursorMappings.Keys) {
     $cursorFile = $cursorMappings[$role]
-    $cursorPath = "$env:SystemRoot\Cursors\W11_light_v2.2_small_amber\$cursorFile"
+    $cursorPath = "$env:SystemRoot\Cursors\<Child Path>\$cursorFile"
     Set-ItemProperty -Path $cursorRegistryKey -Name $role -Value $cursorPath
 }
 
